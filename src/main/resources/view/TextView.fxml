@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="me.ryan.controller.TextController" maxHeight="-Infinity"
+      maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="300.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141">
+
+    <padding>
+        <Insets right="10" left="10"/>
+    </padding>
+    <children>
+        <TextFlow fx:id="textShowArea" prefHeight="200.0"/>
+        <TextArea fx:id="textInputArea"
+                  onKeyReleased="#update"
+                  prefHeight="100.0"/>
+    </children>
+</VBox>

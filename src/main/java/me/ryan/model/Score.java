@@ -1,11 +1,13 @@
 package me.ryan.model;
 
-import javafx.beans.property.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.util.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.text.DecimalFormat;
 import java.time.LocalTime;
@@ -14,41 +16,33 @@ import java.time.format.DateTimeFormatter;
 /**
  * 成绩的模型类
  */
+@Repository
 public class Score {
     // 日志记录器
     private static final Logger logger = LoggerFactory.getLogger(Score.class);
 
     // cpm 和 kps 的更新间隔，单位秒
     private static final double INTERVAL = 0.2;
-
+    // characters per minute, 字符输入速度 = charactersCount / timeIntervalLast in minutes
+    private final StringProperty cpm = new SimpleStringProperty();
+    // keystrokes per second, 击键 = keystrokes / timeIntervalLast in seconds
+    private final StringProperty kps = new SimpleStringProperty();
+    private final StringProperty timeInterval = new SimpleStringProperty();
     // 用于格式化输出 cpm 和 kps
-    DecimalFormat df = new DecimalFormat("0.00");
-
+    private DecimalFormat df = new DecimalFormat("0.00");
     // 当 inputArea 没有 focus 时，需要停止刷新时间。这个变量为此而存在
     private boolean active;
-
     // 每次 start() 被调用时，它被刷新。
     private LocalTime startTime;
 
+    // 这两个参数需要使用Property实现数据绑定，这样这边修改内容时，TableView会同步更新。
     // 从 start() 被调用时开始，用户击键的总次数。
     private int keystrokes;
-
     // 从 start() 被调用时开始，用户输入过的字符总数。
     // 被退格删除了的字符也算在内，但退格本身不算在内。
     private int charactersCount;
-
     // start() 被调用前，也就是用户离开前，用户输入所用过的时间。
     private LocalTime timeIntervalLast;
-
-    // 这两个参数需要使用Property实现数据绑定，这样这边修改内容时，TableView会同步更新。
-
-    // characters per minute, 字符输入速度 = charactersCount / timeIntervalLast in minutes
-    private final StringProperty cpm = new SimpleStringProperty();
-
-    // keystrokes per second, 击键 = keystrokes / timeIntervalLast in seconds
-    private final StringProperty kps = new SimpleStringProperty();
-
-    private final StringProperty timeInterval = new SimpleStringProperty();
 
     /**
      * 默认的无参构造器
@@ -62,7 +56,7 @@ public class Score {
         this.keystrokes = 0;
 
         // 初始时，时间间隔为 0
-        this.timeIntervalLast = LocalTime.of(0,0);
+        this.timeIntervalLast = LocalTime.of(0, 0);
 
         this.cpm.setValue("0.00");
         this.kps.setValue("0.00");
@@ -131,7 +125,8 @@ public class Score {
 
     /**
      * 当用户向 InputArea 输入了字符时，调用此方法。
-     * @param count
+     *
+     * @param count 该次输入增加的字符数
      */
     public void addToCharactersCount(int count) {
         checkIt("addToCharactersCount");
@@ -145,7 +140,7 @@ public class Score {
     /**
      * 更新速度
      */
-    private void updateCpm(){
+    private void updateCpm() {
         double cpm = charactersCount / getTimeIntervalInSeconds() * 60;
 
         this.cpm.setValue(df.format(cpm));
@@ -192,15 +187,15 @@ public class Score {
 
     // 定时更新显示的成绩
     private void updateAutomatically() {
-        ScheduledService scheduledService =  new ScheduledService(){
+        ScheduledService scheduledService = new ScheduledService() {
 
             @Override
             protected Task createTask() {
                 return new Task() {
                     @Override
-                    protected Object call() throws Exception {
+                    protected Object call() {
                         // active 为 true 时才需要更新
-                        if (isActive()){
+                        if (isActive()) {
                             updateCpm();
                             updateKps();
                             updateTimeInterval();
@@ -216,4 +211,27 @@ public class Score {
         scheduledService.start();
     }
 
+
+    /**
+     * TODO 生成收文机器人能识别的成绩字符串
+     */
+    @Override
+    public String toString() {
+        return null;
+    }
+
+    /**
+     * TODO 设为不可变对象。
+     * 因为只有唯一一个活动的Score对象，只能在Copy出的对象上调用此方法，否则就完蛋了。
+     */
+    public void setUnmodifiable() {
+
+    }
+
+    /**
+     * TODO 重置此对象，在Copy后，要重置原对象，为下一次跟打做准备。
+     */
+    public void reInit() {
+
+    }
 }
