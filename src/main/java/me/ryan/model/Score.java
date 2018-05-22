@@ -1,237 +1,335 @@
 package me.ryan.model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.concurrent.ScheduledService;
-import javafx.concurrent.Task;
-import javafx.util.Duration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
- * 成绩的模型类
+ * 成绩的模型类，用于计算各项成绩用
  */
-@Repository
+
+@Component
 public class Score {
-    // 日志记录器
-    private static final Logger logger = LoggerFactory.getLogger(Score.class);
 
-    // cpm 和 kps 的更新间隔，单位秒
-    private static final double INTERVAL = 0.2;
-    // characters per minute, 字符输入速度 = charactersCount / timeIntervalLast in minutes
-    private final StringProperty cpm = new SimpleStringProperty();
-    // keystrokes per second, 击键 = keystrokes / timeIntervalLast in seconds
-    private final StringProperty kps = new SimpleStringProperty();
-    private final StringProperty timeInterval = new SimpleStringProperty();
-    // 用于格式化输出 cpm 和 kps
-    private DecimalFormat df = new DecimalFormat("0.00");
-    // 当 inputArea 没有 focus 时，需要停止刷新时间。这个变量为此而存在
-    private boolean active;
-    // 每次 start() 被调用时，它被刷新。
-    private LocalTime startTime;
+    // 用于格式化输出小数
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
-    // 这两个参数需要使用Property实现数据绑定，这样这边修改内容时，TableView会同步更新。
-    // 从 start() 被调用时开始，用户击键的总次数。
+    // 用于格式化输出时间
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("mm:ss:SS");
+
+    //下面是各项属性
+
+    // 第xx段
+    private int idOfArticle;
+
+    // 键数
     private int keystrokes;
-    // 从 start() 被调用时开始，用户输入过的字符总数。
-    // 被退格删除了的字符也算在内，但退格本身不算在内。
+
+    // 字数
     private int charactersCount;
-    // start() 被调用前，也就是用户离开前，用户输入所用过的时间。
-    private LocalTime timeIntervalLast;
+
+    // 用时
+    private LocalTime timeInterval;
+
+    // characters per minute, 字符输入速度
+    private double cpm;
+
+    // keystrokes per second, 击键
+    private double kps;
+
+    // 码长
+    private double keysEachChar;
+
+    // 回车
+    private int keyEnterCount;
+
+    // 错字
+    private int typos;
+
+    // 打词率
+    private double ratioOfWords;
+
+    // 退格
+    private int backspaceCount;
+
+    // 键准
+    private double keysAccuracy;
+
+    // 重打
+    private int retypeCount;
 
     /**
-     * 默认的无参构造器
+     *  无参构造器
      */
     public Score() {
-        // startTime 在 start() 被调用时才会被初始化。active也才会置为true
-        this.startTime = null;
-        this.active = false;
-
-        this.charactersCount = 0;
+        this.idOfArticle = 0;
         this.keystrokes = 0;
-
-        // 初始时，时间间隔为 0
-        this.timeIntervalLast = LocalTime.of(0, 0);
-
-        this.cpm.setValue("0.00");
-        this.kps.setValue("0.00");
-        this.timeInterval.setValue("0.00");
-
-        // 开启自动更新
-        updateAutomatically();
+        this.charactersCount = 0;
+        this.timeInterval = LocalTime.of(0, 0);
+        this.cpm = 0;
+        this.kps = 0;
+        this.keysEachChar = 0;
+        this.keyEnterCount = 0;
+        this.typos = 0;
+        this.ratioOfWords = 0;
+        this.backspaceCount = 0;
+        this.keysAccuracy = 0;
+        this.retypeCount = 0;
     }
 
-    public boolean isActive() {
-        return active;
+
+    // 下面的getXXXString()方法，用于格式化输出各属性
+
+    public String getIdOfArticleString() {
+        return idOfArticle + "";
     }
 
-    /**
-     * 调用任意需要读取数据的方法时，都要先check一下。
-     */
-    private void checkIt(String from) {
-        if (!isActive()) {
-            logger.error("{}: 在未调用 start() 前，此对象不可用。", from);
-
-        }
+    public String getKeystrokesString() {
+        return keystrokes + "";
     }
 
-    /**
-     * 返回从 start() 被调用，到现在的时间间隔
-     *
-     * @return LocalTime
-     */
-    private LocalTime getTimeInterval() {
-        checkIt("getTimeInterval");
-
-        return LocalTime.now()  // 当前时间
-
-                .minusHours(startTime.getHour())     // 减去开始时间
-                .minusMinutes(startTime.getMinute())
-                .minusSeconds(startTime.getSecond())
-                .minusNanos(startTime.getNano())
-
-                .plusHours(timeIntervalLast.getHour())     // 加上以前用过的时间
-                .plusMinutes(timeIntervalLast.getMinute())
-                .plusSeconds(timeIntervalLast.getSecond())
-                .plusNanos(timeIntervalLast.getNano());
+    public String getCharactersCountString() {
+        return charactersCount + "";
     }
 
-    /**
-     * 返回从 start() 被调用，到现在的时间间隔
-     *
-     * @return 以秒为单位 的 double 值
-     */
-    private double getTimeIntervalInSeconds() {
-        LocalTime timeInterval = getTimeInterval();
-        return timeInterval.toSecondOfDay()
-                + timeInterval.getNano() / Math.pow(10, 9);
+    public String getTimeIntervalString() {
+        return timeInterval.format(dateTimeFormatter);
+    }
+
+    public String getCpmString() {
+        return df.format(cpm);
+    }
+
+    public String getKpsString() {
+        return df.format(kps);
+    }
+
+    public String getKeysEachCharString() {
+        return df.format(keysEachChar);
+    }
+
+    public String getKeyEnterCountString() {
+        return keyEnterCount + "";
+    }
+
+    public String getTyposString() {
+        return typos + "";
     }
 
     /**
-     * 每次监听到按键消息，就调用此方法
+     * 打词率，百分比
      */
-    public void incKeystrokes() {
-        checkIt("incKeystrokes");
+    public String getRatioOfWordsString() {
+        return df.format(ratioOfWords * 100) + "%";
+    }
 
-        keystrokes++;
-
-        logger.info("keystrokes: {}", keystrokes);
+    public String getBackspaceCountString() {
+        return backspaceCount + "";
     }
 
     /**
-     * 当用户向 InputArea 输入了字符时，调用此方法。
-     *
-     * @param count 该次输入增加的字符数
+     * 键准，百分比
      */
-    public void addToCharactersCount(int count) {
-        checkIt("addToCharactersCount");
+    public String getKeysAccuracyString() {
+        return df.format(keysAccuracy * 100) + "%";
+    }
 
-        charactersCount += count;
-
-        logger.info("charactersCount: {}", charactersCount);
+    public String getRetypeCountString() {
+        return retypeCount + "";
     }
 
 
-    /**
-     * 更新速度
-     */
-    private void updateCpm() {
-        double cpm = charactersCount / getTimeIntervalInSeconds() * 60;
+    // 下面是各属性的 get set 方法
 
-        this.cpm.setValue(df.format(cpm));
+    public int getIdOfArticle() {
+        return idOfArticle;
     }
 
-    public StringProperty cpmProperty() {
-        return cpm;
+    public void setIdOfArticle(int idOfArticle) {
+        this.idOfArticle = idOfArticle;
     }
 
-    /**
-     * 更新击键
-     */
-    private void updateKps() {
-        double kps = keystrokes / getTimeIntervalInSeconds();
-
-        this.kps.setValue(df.format(kps));
+    public int getKeystrokes() {
+        return keystrokes;
     }
 
-    public StringProperty kpsProperty() {
-        return kps;
+    public void setKeystrokes(int keystrokes) {
+        this.keystrokes = keystrokes;
     }
 
-    private void updateTimeInterval() {
-        String time = getTimeInterval().format(
-                DateTimeFormatter.ofPattern("mm:ss:SS"));
-        this.timeInterval.setValue(time);
+    public int getCharactersCount() {
+        return charactersCount;
     }
 
-    public StringProperty timeIntervalProperty() {
+    public void setCharactersCount(int charactersCount) {
+        this.charactersCount = charactersCount;
+    }
+
+    public LocalTime getTimeInterval() {
         return timeInterval;
     }
 
-    // 开始记录
-    public void start() {
-        this.active = true;
-        this.startTime = LocalTime.now();
+    public void setTimeInterval(LocalTime timeInterval) {
+        this.timeInterval = timeInterval;
     }
 
-    // 暂停记录
-    public void suspended() {
-        this.timeIntervalLast = getTimeInterval();  // 保存此次的timeInterval。
-        this.active = false;
+    public double getCpm() {
+        return cpm;
     }
 
-    // 定时更新显示的成绩
-    private void updateAutomatically() {
-        ScheduledService scheduledService = new ScheduledService() {
-
-            @Override
-            protected Task createTask() {
-                return new Task() {
-                    @Override
-                    protected Object call() {
-                        // active 为 true 时才需要更新
-                        if (isActive()) {
-                            updateCpm();
-                            updateKps();
-                            updateTimeInterval();
-                        }
-
-                        return null;
-                    }
-                };
-            }
-        };
-
-        scheduledService.setPeriod(Duration.seconds(INTERVAL)); //设定更新间隔
-        scheduledService.start();
+    public void setCpm(double cpm) {
+        this.cpm = cpm;
     }
 
+    public double getKps() {
+        return kps;
+    }
+
+    public void setKps(double kps) {
+        this.kps = kps;
+    }
+
+    public double getKeysEachChar() {
+        return keysEachChar;
+    }
+
+    public void setKeysEachChar(double keysEachChar) {
+        this.keysEachChar = keysEachChar;
+    }
+
+    public int getKeyEnterCount() {
+        return keyEnterCount;
+    }
+
+    public void setKeyEnterCount(int keyEnterCount) {
+        this.keyEnterCount = keyEnterCount;
+    }
+
+    public int getTypos() {
+        return typos;
+    }
+
+    public void setTypos(int typos) {
+        this.typos = typos;
+    }
+
+    public double getRatioOfWords() {
+        return ratioOfWords;
+    }
+
+    public void setRatioOfWords(double ratioOfWords) {
+        this.ratioOfWords = ratioOfWords;
+    }
+
+    public int getBackspaceCount() {
+        return backspaceCount;
+    }
+
+    public void setBackspaceCount(int backspaceCount) {
+        this.backspaceCount = backspaceCount;
+    }
+
+    public double getKeysAccuracy() {
+        return keysAccuracy;
+    }
+
+    public void setKeysAccuracy(double keysAccuracy) {
+        this.keysAccuracy = keysAccuracy;
+    }
+
+    public int getRetypeCount() {
+        return retypeCount;
+    }
+
+    public void setRetypeCount(int retypeCount) {
+        this.retypeCount = retypeCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Score)) return false;
+        Score score = (Score) o;
+        return getIdOfArticle() == score.getIdOfArticle() &&
+                getKeystrokes() == score.getKeystrokes() &&
+                getCharactersCount() == score.getCharactersCount() &&
+                Double.compare(score.getKeysEachChar(), getKeysEachChar()) == 0 &&
+                getKeyEnterCount() == score.getKeyEnterCount() &&
+                getTypos() == score.getTypos() &&
+                Double.compare(score.getRatioOfWords(), getRatioOfWords()) == 0 &&
+                getBackspaceCount() == score.getBackspaceCount() &&
+                Double.compare(score.getKeysAccuracy(), getKeysAccuracy()) == 0 &&
+                getRetypeCount() == score.getRetypeCount() &&
+                Objects.equals(getTimeInterval(), score.getTimeInterval()) &&
+                Objects.equals(getCpm(), score.getCpm()) &&
+                Objects.equals(getKps(), score.getKps());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(
+                getIdOfArticle(),
+                getKeystrokes(),
+                getCharactersCount(),
+                getTimeInterval(),
+                getCpm(),
+                getKps(),
+                getKeysEachChar(),
+                getKeyEnterCount(),
+                getTypos(),
+                getRatioOfWords(),
+                getBackspaceCount(),
+                getKeysAccuracy(),
+                getRetypeCount()
+        );
+    }
 
     /**
-     * TODO 生成收文机器人能识别的成绩字符串
+     * 校验码好像都只取6位
      */
+    public String getHashCodeString() {
+        return (hashCode() + "").substring(0, 6);
+    }
+
     @Override
     public String toString() {
-        return null;
+        return "第" + getIdOfArticleString() + "段" +
+                " 键数" + getKeystrokesString() +
+                " 字数" + getCharactersCountString() +
+                " 用时" + getTimeIntervalString() +
+                " 速度" + getCpmString() +
+                " 击键" + getKpsString() +
+                " 码长" + getKeysEachCharString() +
+                " 回车" + getKeyEnterCountString() +
+                " 错字" + getTyposString() +
+                " 打词" + getRatioOfWordsString() +
+                " 退格" + getBackspaceCountString() +
+                " 键准" + getKeysAccuracyString() +
+                " 重打" + getRetypeCountString() +
+                " 校验" + getHashCodeString();
     }
 
-    /**
-     * TODO 设为不可变对象。
-     * 因为只有唯一一个活动的Score对象，只能在Copy出的对象上调用此方法，否则就完蛋了。
-     */
-    public void setUnmodifiable() {
-
-    }
 
     /**
-     * TODO 重置此对象，在Copy后，要重置原对象，为下一次跟打做准备。
+     * 重置成绩
      */
     public void reInit() {
-
+        this.idOfArticle = 0;
+        this.keystrokes = 0;
+        this.charactersCount = 0;
+        this.timeInterval = LocalTime.of(0, 0);
+        this.cpm = 0;
+        this.kps = 0;
+        this.keysEachChar = 0;
+        this.keyEnterCount = 0;
+        this.typos = 0;
+        this.ratioOfWords = 0;
+        this.backspaceCount = 0;
+        this.keysAccuracy = 0;
+        this.retypeCount = 0;
     }
 }

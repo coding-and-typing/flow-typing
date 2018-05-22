@@ -2,7 +2,7 @@ package me.ryan.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.input.Clipboard;
-import me.ryan.model.Score;
+import me.ryan.model.ScoreUpdater;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,30 +16,34 @@ public class RootController {
 
     private final ScoresController scoresController;
 
-    private final Score scoreNow;
+    private final ScoreUpdater scoreUpdator;
 
     @Autowired
-    public RootController(TextController textController, ScoresController scoresController, Score score) {
+    public RootController(TextController textController, ScoresController scoresController, ScoreUpdater scoreUpdator) {
         this.textController = textController;
         this.scoresController = scoresController;
-        this.scoreNow = score;
+        this.scoreUpdator = scoreUpdator;
     }
 
-    // 剪切版载文
+    /**
+     * 剪切版载文
+     * TODO QQ群文章格式分析，拿到段号，文章名。
+     *
+     * @param actionEvent xx
+     */
     public void setTextFromCupboard(ActionEvent actionEvent) {
-        // 1. 载文
+        // 1. 从剪切版获取文章
         Clipboard clipboard = Clipboard.getSystemClipboard();
         String text = clipboard.getString();
+
+        // 2. 显示文章
         textController.setTextShow(text);
 
-        // TODO 2. 初始化输入框和 ScoreNow
-//        scoresController.newScore();
+
+        // 3. 初始化成绩
+        scoreUpdator.reInit();
     }
 
-    // TODO 在载文时，要创建新的 Score 对象。
-
-
     // TODO 重打
-
 
 }

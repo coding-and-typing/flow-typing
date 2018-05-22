@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 <VBox xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="me.ryan.controller.TextController" maxHeight="-Infinity"
-      maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="300.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141">
+      fx:controller="me.ryan.controller.TextController"
+      minHeight="300.0" minWidth="600.0"
+      prefHeight="300.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/8.0.141">
 
     <padding>
         <Insets right="10" left="10"/>

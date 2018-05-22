@@ -1,5 +1,6 @@
 package me.ryan.controller;
 
+
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -9,8 +10,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.util.Duration;
-import me.ryan.model.Score;
+import me.ryan.model.ScoreUpdater;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,6 @@ public class TextController {
     // 日志记录器
     private static final Logger logger = LoggerFactory.getLogger(TextController.class);
 
-    private final Score scoreNow;
-
     // 跟打文章显示区域
     @FXML
     private TextFlow textShowArea;
@@ -32,42 +30,22 @@ public class TextController {
     @FXML
     private TextArea textInputArea;
 
+    private final ScoreUpdater scoreUpdater;
+
     // 保存上次按键消息时, textInputArea 的长度。用于判断字符量的增减
     private int inputLengthLast = 0;
 
-    /**
-     * 构造器，Spring自动注入，创建其实例。
-     *
-     * @param scoreNow 当前成绩对象，是唯一活动的Score实例。
-     */
     @Autowired
-    public TextController(Score scoreNow) {
-        this.scoreNow = scoreNow;
+    public TextController(ScoreUpdater scoreUpdater) {
+        this.scoreUpdater = scoreUpdater;
 
         checkFocusAutomatically();
     }
 
-
-    // 每当有按键消息时，此方法被触发
-    public void update(KeyEvent keyEvent) {
-        // 当此方法被调用时，用户一定已经开始输入了，所以要start
-        if (!scoreNow.isActive()) scoreNow.start();
-
-        scoreNow.incKeystrokes();
-
-        // update charactersCount
-        int InputLengthNow = textInputArea.getLength();
-        if (inputLengthLast < InputLengthNow) {
-            scoreNow.addToCharactersCount(InputLengthNow - inputLengthLast);
-        }
-
-        // 刷新跟打文本显示框
-        updateTextFlow(keyEvent);
-
-        // 最后才能更新它
-        inputLengthLast = InputLengthNow;
-    }
-
+    /**
+     * 离开当前界面时，要暂停更新成绩
+     * TODO 应该有更好的办法，可以在 RootController 里设置这个。
+     */
     private void checkFocusAutomatically() {
         ScheduledService scheduledService = new ScheduledService() {
 
@@ -76,41 +54,75 @@ public class TextController {
                 return new Task() {
                     @Override
                     protected Object call() {
-                        if (scoreNow.isActive() && !textInputArea.isFocused())
-                            scoreNow.suspended();
-
+                        if (scoreUpdater.isActive() && !textInputArea.isFocused())
+                            scoreUpdater.suspended();
                         return null;
                     }
                 };
             }
         };
-
-        scheduledService.setPeriod(Duration.seconds(.1)); //设定更新间隔
-        scheduledService.start();
     }
 
+
+    /**
+     * 载文
+     *
+     * @param text
+     */
     public void setTextShow(String text) {
+        // 清空两个组件的内容
+        textShowArea.getChildren().removeAll();
+        textInputArea.setText("");
+
+        // 每个字符为一个 Text 对象，这样就可以分别控制显示效果了。
         for (int i = 0; i < text.codePointCount(0, text.length()); i++) {
-            Text text1 = new Text(
+            var text1 = new Text(
                     new String(Character.toChars(text.codePointAt(i))));
             text1.setFont(Font.font("Verdana", 20));
             textShowArea.getChildren().add(text1);
         }
 
-        textInputArea.setFont(Font.font("Verdana", 20));
+        // 输入框允许输入
+        textInputArea.setEditable(true);
     }
 
-    private void updateTextFlow(KeyEvent keyEvent) {
+
+    /**
+     * 每当有按键消息时，此方法被触发
+     */
+    public void update(KeyEvent keyEvent) {
+        // 当此方法被调用时，用户一定已经开始输入了，所以要start
+        if (!scoreUpdater.isActive()) scoreUpdater.start();
+
+        // 1. 更新和文本有关的内容
+        updateText();
+
+        // 2. 更新和键入字符有关的内容
+        updateKeys(keyEvent);
+
+    }
+
+    private void updateText() {
+        // TODO 先测试一下这个长度是 char 长度，还是 code point 长度
+        int InputLengthNow = textInputArea.getLength();
+
+        // 1. 更新字符数
+        if (inputLengthLast < InputLengthNow) {
+            scoreUpdater.addToCharactersCount(InputLengthNow - inputLengthLast);
+        }
+
+        // 2. 更新跟打文本的显示效果、还有错字数
         var textList = textShowArea.getChildren();
         var inputLength = textInputArea.getLength();
 
+        // 为0还更新个屁啊
         if (inputLength == 0 || textList.size() == 0) return;
 
         // 跟打结束
-        // TODO 字符数相同，而且结尾无错
+        // TODO 结尾无错字才结束跟打
         if (textList.size() == inputLength) {
             textInputArea.setEditable(false);
-            scoreNow.suspended();
+            scoreUpdater.suspended();
         }
 
         // 检测是否敲对了
@@ -124,7 +136,34 @@ public class TextController {
                 textShouldBe.setFill(Paint.valueOf("Orange"));
             } else {
                 textShouldBe.setFill(Paint.valueOf("Red"));
+                // TODO 更新错字数
             }
         }
     }
+
+    private void updateKeys(KeyEvent keyEvent) {
+        scoreUpdater.incKeystrokes();
+
+        switch (keyEvent.getCode()) {
+            case BACK_SPACE:
+                scoreUpdater.incBackspaceCount();
+                break;
+            case ENTER:
+                scoreUpdater.incKeyEnterCount();
+                break;
+        }
+
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // 设置一些样式参数，也可用 css 控制
+    }
+
+
+
 }

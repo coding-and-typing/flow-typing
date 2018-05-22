@@ -33,8 +33,10 @@ public class MainApp extends Application {
         // 4. 将 textView 和 scoresView 添加进RootView
         root.getChildren().addAll(textView, scoresView);
 
-        // 5. 创建包含了 RootView 的 Scene，并将其放入 PrimaryStage。
+        // 5. 创建包含了 RootView 的 Scene，添加样式表，并将其放入 PrimaryStage。
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("/css/root.css");
+
         primaryStage.setScene(scene);
 
         // 6. 显示primaryStage
