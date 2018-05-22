@@ -10,6 +10,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
 import me.ryan.model.ScoreUpdater;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +63,7 @@ public class TextController {
             }
         };
 
+        scheduledService.setPeriod(Duration.seconds(.1)); //设定更新间隔
         scheduledService.start();
     }
 
