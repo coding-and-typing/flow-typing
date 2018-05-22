@@ -107,11 +107,7 @@ public class ScoresController {
      * 描述：将成绩复制一分，作为历史成绩
      */
     public void updateScores() {
-        try {
-            ScoreProperties scoreLast = scoresList.get(0).clone();
-            scoresList.add(scoreLast);
-        } catch (CloneNotSupportedException e) {
-            logger.error("Copy ScoreUpdater 对象 失败。历史记录未添加");
-        }
+        ScoreProperties scoreLast = scoresList.get(0).clone();
+        scoresList.add(scoreLast);
     }
 }

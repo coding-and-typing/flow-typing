@@ -75,12 +75,13 @@ public class TextController {
         textInputArea.setText("");
 
         // 每个字符为一个 Text 对象，这样就可以分别控制显示效果了。
-        for (int i = 0; i < text.codePointCount(0, text.length()); i++) {
-            var text1 = new Text(
-                    new String(Character.toChars(text.codePointAt(i))));
-            text1.setFont(Font.font("Verdana", 20));
-            textShowArea.getChildren().add(text1);
-        }
+        text.codePoints().forEach(
+                c -> {
+                    var text1 = new Text(new String(Character.toChars(c)));
+                    text1.setFont(Font.font("Verdana", 20));
+                    textShowArea.getChildren().add(text1);
+                }
+        );
 
         // 输入框允许输入
         textInputArea.setEditable(true);
@@ -94,12 +95,11 @@ public class TextController {
         // 当此方法被调用时，用户一定已经开始输入了，所以要start
         if (!scoreUpdater.isActive()) scoreUpdater.start();
 
-        // 1. 更新和文本有关的内容
-        updateText();
-
-        // 2. 更新和键入字符有关的内容
+        // 1. 更新和键入字符有关的内容
         updateKeys(keyEvent);
 
+        // 2. 更新和文本有关的内容
+        updateText();
     }
 
     private void updateText() {
@@ -120,7 +120,7 @@ public class TextController {
 
         // 跟打结束
         // TODO 结尾无错字才结束跟打
-        if (textList.size() == inputLength) {
+        if (textList.size() >= inputLength) {
             textInputArea.setEditable(false);
             scoreUpdater.suspended();
         }
