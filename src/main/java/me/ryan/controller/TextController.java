@@ -61,6 +61,8 @@ public class TextController {
                 };
             }
         };
+
+        scheduledService.start();
     }
 
 
@@ -120,7 +122,7 @@ public class TextController {
 
         // 跟打结束
         // TODO 结尾无错字才结束跟打
-        if (textList.size() >= inputLength) {
+        if (inputLength >= textList.size()) {
             textInputArea.setEditable(false);
             scoreUpdater.suspended();
         }

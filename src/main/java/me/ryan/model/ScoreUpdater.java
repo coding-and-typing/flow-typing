@@ -145,8 +145,8 @@ public class ScoreUpdater {
      * 开始更新，用户开始输入
      */
     public void start() {
-        this.active = true;
         this.startTime = LocalTime.now();
+        this.active = true;
 
         logger.info("start()：开始记录成绩。");
     }
