@@ -137,6 +137,7 @@ public class TextController {
             scoreUpdater.addToCharactersCount(count);
             // 如果字符数添加了不止一个，还要更新打词字符数
             if (count > 1) {
+                // TODO 打词率应该排除标点符号和空白字符
                 scoreUpdater.addToCharCountInWord(count);
             }
 
