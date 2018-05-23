@@ -19,13 +19,13 @@ public class RootController {
 
     private final ScoresController scoresController;
 
-    private final ScoreUpdater scoreUpdator;
+    private final ScoreUpdater scoreUpdater;
 
     @Autowired
-    public RootController(TextController textController, ScoresController scoresController, ScoreUpdater scoreUpdator) {
+    public RootController(TextController textController, ScoresController scoresController, ScoreUpdater scoreUpdater) {
         this.textController = textController;
         this.scoresController = scoresController;
-        this.scoreUpdator = scoreUpdator;
+        this.scoreUpdater = scoreUpdater;
     }
 
     /**
@@ -37,7 +37,7 @@ public class RootController {
     public void setQQTextFromCupboard(ActionEvent actionEvent) {
         // 1. 保存上一次的成绩，并初始化成绩
         scoresController.updateScores();
-        scoreUpdator.reInit();
+        scoreUpdater.reInit();
 
 
         // 2. 从剪切版获取文章
@@ -54,9 +54,9 @@ public class RootController {
         Pattern pattern =
                 Pattern.compile(".+"     // 这个是 ”xxx群xxx赛文“ 之类的东西
                         + "第\\d+期-"    // 第 xxx 期
-                        + ".+制作\\n"    // xx制作
+                        + ".+制作(?:\\r\\n|\\n|\\r)"    // xx制作
                         + "([\\s\\S]+)"        // 赛文内容
-                        + "\\n-{3,10}第(\\d+)段"  // -----第xxx段
+                        + "(?:\\r\\n|\\n|\\r)-{3,10}第(\\d+)段"  // -----第xxx段
                         + "[\\s\\S]*"          // 本文由xxx组成
                 );
         Matcher matcher = pattern.matcher(text);
@@ -65,7 +65,7 @@ public class RootController {
             // 如果匹配上了
 
             // 4. 设置段号
-            scoreUpdator.setIdOfArticle(Integer.parseInt(matcher.group(2)));
+            scoreUpdater.setIdOfArticle(Integer.parseInt(matcher.group(2)));
             // 5. 设置赛文内容
             text = matcher.group(1);
 
