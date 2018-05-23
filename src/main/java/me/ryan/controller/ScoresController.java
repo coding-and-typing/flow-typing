@@ -74,9 +74,13 @@ public class ScoresController {
     // 成绩列表
     private ObservableList<ScoreProperties> scoresList = FXCollections.observableArrayList();
 
+    // 详见updateScore方法（虽然我特别讨厌立flag）
+    private boolean flag;
+
     @Autowired
     public ScoresController(ScoreProperties scoreNow) {
         scoresList.add(scoreNow);
+        flag = true;
     }
 
     /**
@@ -107,6 +111,12 @@ public class ScoresController {
      * 描述：将成绩复制一分，作为历史成绩
      */
     public void updateScores() {
+        // 第一次updateScore时(刚刚打开软件)，并没有历史成绩，所以不需要添加。
+        if (flag) {
+            flag = false;  // 这之后，这个函数就正常工作了。
+            return;
+        }
+
         ScoreProperties scoreLast = scoresList.get(0).clone();
         scoresList.add(scoreLast);
     }
