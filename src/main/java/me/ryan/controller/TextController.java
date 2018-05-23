@@ -116,6 +116,7 @@ public class TextController {
 
         // 2. 更新和文本有关的内容
         // TODO 只在已经上屏时, 才调用 updateText() 方法. (需要找到一个检测字符是否已经上屏的方法,)
+        textInputArea.getInputMethodRequests();
         updateText();
     }
 
