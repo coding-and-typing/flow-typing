@@ -3,8 +3,6 @@ package me.ryan.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,9 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ScoreProperties implements Cloneable {
-    // 日志记录器
-    private static final Logger logger = LoggerFactory.getLogger(ScoreProperties.class);
-
     //属性全用 String，方便调整
 
     // 速度

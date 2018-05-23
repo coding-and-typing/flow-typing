@@ -110,7 +110,7 @@ public class ScoreUpdater {
         score.setKeystrokes(score.getKeystrokes() + 1);
         scoreProperties.setKeystrokes(score.getKeystrokesString());
 
-        logger.debug("keystrokes: {}", score.getKeystrokesString());
+        logger.debug("inc keystrokes: {}", score.getKeystrokesString());
     }
 
     /**
@@ -124,7 +124,7 @@ public class ScoreUpdater {
         score.setCharactersCount(score.getCharactersCount() + count);
         scoreProperties.setCharactersCount(score.getCharactersCountString());
 
-        logger.debug("charactersCount: {}", score.getCharactersCountString());
+        logger.debug("charactersCount + {}: {}", count, score.getCharactersCountString());
     }
 
     public void incKeyEnterCount() {
@@ -132,13 +132,16 @@ public class ScoreUpdater {
 
         score.setKeyEnterCount(score.getKeyEnterCount() + 1);
         scoreProperties.setKeyEnterCount(score.getKeyEnterCountString());
+
+        logger.debug("inc keyEnterCount: {}", score.getKeyEnterCountString());
+
     }
 
     public void incBackspaceCount() {
         score.setBackspaceCount(score.getBackspaceCount() + 1);
         scoreProperties.setBackspaceCount(score.getBackspaceCountString());
 
-        logger.debug("BackspaceCount + 1:　{}", score.getBackspaceCount());
+        logger.debug("inc BackspaceCount:　{}", score.getBackspaceCount());
     }
 
     /**
@@ -162,6 +165,8 @@ public class ScoreUpdater {
         updateScore();
 
         this.active = false;
+
+        logger.info("suspended()：暂停记录成绩。");
     }
 
     /**
@@ -230,6 +235,8 @@ public class ScoreUpdater {
         this.active = false;
         this.startTime = LocalTime.now();
         timeIntervalLast = LocalTime.of(0, 0);
+
+        logger.info("重置成绩。");
     }
 
 

@@ -23,6 +23,9 @@ public class TextController {
     // 日志记录器
     private static final Logger logger = LoggerFactory.getLogger(TextController.class);
 
+    // 自动检测的时间间隔
+    private static final double INTERVAL = 0.1;
+
     // 跟打文章显示区域
     @FXML
     private TextFlow textShowArea;
@@ -35,6 +38,9 @@ public class TextController {
 
     // 保存上次按键消息时, textInputArea 的长度。用于判断字符量的增减
     private int inputLengthLast = 0;
+
+    // 跟打完毕的标志(它和 isActive 不一样，isActive 是用户离开界面的标志)
+    private boolean done = false;
 
     @Autowired
     public TextController(ScoreUpdater scoreUpdater) {
@@ -63,7 +69,7 @@ public class TextController {
             }
         };
 
-        scheduledService.setPeriod(Duration.seconds(.1)); //设定更新间隔
+        scheduledService.setPeriod(Duration.seconds(INTERVAL)); //设定更新间隔
         scheduledService.start();
     }
 
@@ -74,11 +80,15 @@ public class TextController {
      * @param text
      */
     public void setTextShow(String text) {
+        // 1. 初始化
+        inputLengthLast = 0;
+        done = false;
+
         // 清空两个组件的内容
-        textShowArea.getChildren().removeAll();
+        textShowArea.getChildren().clear();
         textInputArea.setText("");
 
-        // 每个字符为一个 Text 对象，这样就可以分别控制显示效果了。
+        // 2. 每个字符为一个 Text 对象，这样就可以分别控制显示效果了。
         text.codePoints().forEach(
                 c -> {
                     var text1 = new Text(new String(Character.toChars(c)));
@@ -87,7 +97,7 @@ public class TextController {
                 }
         );
 
-        // 输入框允许输入
+        // 3. 输入框允许输入
         textInputArea.setEditable(true);
     }
 
@@ -96,6 +106,9 @@ public class TextController {
      * 每当有按键消息时，此方法被触发
      */
     public void update(KeyEvent keyEvent) {
+        // 跟打结束后，就不应该更新任何东西了。
+        if (done) return;
+
         // 当此方法被调用时，用户一定已经开始输入了，所以要start
         if (!scoreUpdater.isActive()) scoreUpdater.start();
 
@@ -125,6 +138,7 @@ public class TextController {
         // 跟打结束
         // TODO 结尾无错字才结束跟打
         if (inputLength >= textList.size()) {
+            done = true;
             textInputArea.setEditable(false);
             scoreUpdater.suspended();
         }
