@@ -7,10 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61f14bf1-8941-46f1-94c5-9ac4a687f938" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,20 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputMethodRequests.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InputMethodRequests.java" pinned="false" current-in-tab="true">
         <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/input/InputMethodRequests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-633">
+            <state relative-caret-position="-429">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/LICENSE">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -115,8 +104,8 @@
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java" />
         <option value="$PROJECT_DIR$/src/test/resources/跟打文章" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/LICENSE" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -183,6 +172,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/ryan/Codes/Java/Typing_Practice/README.md" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
@@ -307,7 +297,7 @@
       <workItem from="1527046950683" duration="136000" />
       <workItem from="1527049525231" duration="243000" />
       <workItem from="1527087188848" duration="1399000" />
-      <workItem from="1527088689724" duration="7511000" />
+      <workItem from="1527088689724" duration="9085000" />
     </task>
     <task id="LOCAL-00001" summary="1. 开始使用maven管理依赖，并稍微调整了下项目结构。&#10;2. 使用logback作为日志实现框架。&#10;3. 使用Spring进行依赖注入，简化代码。">
       <created>1526801470721</created>
@@ -505,11 +495,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527094570023</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="add BSD Licence">
+      <created>1527096828355</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1527096828355</updated>
+    </task>
+    <task id="LOCAL-00030" summary="update BSD Licence">
+      <created>1527097609018</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1527097609018</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67999000" />
+    <option name="totallyTimeSpent" value="69573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="725" extended-state="6" />
@@ -518,7 +522,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32984293" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32984293" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32954547" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.34205934" />
@@ -577,7 +581,9 @@
     <MESSAGE value="修复历史成绩的一个bug" />
     <MESSAGE value="完成打词率属性" />
     <MESSAGE value="未完成：移动光标修改已经跟打的字符" />
-    <option name="LAST_COMMIT_MESSAGE" value="未完成：移动光标修改已经跟打的字符" />
+    <MESSAGE value="add BSD Licence" />
+    <MESSAGE value="update BSD Licence" />
+    <option name="LAST_COMMIT_MESSAGE" value="update BSD Licence" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -636,13 +642,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/model/Score.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/ScoresView.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -830,13 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="118" column="40" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -848,11 +840,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="118" column="40" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="833">
-            <caret line="49" column="85" lean-forward="true" selection-start-line="49" selection-start-column="85" selection-end-line="49" selection-end-column="85" />
+          <first_editor relative-caret-position="371">
+            <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
           </first_editor>
           <second_editor />
         </state>
@@ -860,15 +879,8 @@
     </entry>
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/input/InputMethodRequests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-633">
+        <state relative-caret-position="-429">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
