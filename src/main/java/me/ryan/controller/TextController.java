@@ -138,7 +138,7 @@ public class TextController {
                 var inputChar = inputText[i];
                 var textShouldBe = (Text) textList.get(i);
 
-                logger.info("inputText_{}: {}, textShouldBe: {}", i, inputChar, textShouldBe.getText());
+                logger.info("inputText_{}: '{}', textShouldBe: {}", i, inputChar, textShouldBe.getText());
 
                 if (textShouldBe.getText().equals(inputChar)) {
                     textShouldBe.setOpacity(0.5);  // 敲对了

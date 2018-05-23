@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61f14bf1-8941-46f1-94c5-9ac4a687f938" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +32,17 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="TextController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="140" column="47" selection-start-line="140" selection-start-column="47" selection-end-line="140" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -81,9 +91,9 @@
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/model/Score.java" />
         <option value="$PROJECT_DIR$/src/main/resources/logback-test.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/RootController.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" />
       </list>
     </option>
   </component>
@@ -133,7 +143,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -190,12 +199,22 @@
               <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ryan" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -318,6 +337,7 @@
       <workItem from="1527041989850" duration="2005000" />
       <workItem from="1527044210121" duration="1453000" />
       <workItem from="1527046950683" duration="136000" />
+      <workItem from="1527049525231" duration="243000" />
     </task>
     <task id="LOCAL-00001" summary="1. 开始使用maven管理依赖，并稍微调整了下项目结构。&#10;2. 使用logback作为日志实现框架。&#10;3. 使用Spring进行依赖注入，简化代码。">
       <created>1526801470721</created>
@@ -456,7 +476,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58846000" />
+    <option name="totallyTimeSpent" value="59089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -476,7 +496,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32984293" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.17818181" visible="true" weight="0.27452415" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.17818181" visible="true" weight="0.27452415" />
       <window_info anchor="right" id="Database" order="5" weight="0.32954547" />
       <window_info id="Structure" order="1" sideWeight="0.8218182" side_tool="true" weight="0.275" />
       <window_info id="UI Designer" order="2" />
@@ -579,20 +599,20 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/TextView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/ScoresView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -605,20 +625,20 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/TextView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/ScoresView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/model/Score.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -628,12 +648,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/ScoresView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/config/SpringConfig.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -668,20 +688,20 @@
     </entry>
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.controls/javafx/scene/control/TableColumn.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/ScoresView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/TextView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/java.base/java/util/stream/IntStream.java" />
@@ -744,12 +764,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/RootView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/RootController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -768,17 +788,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="140" column="104" selection-start-line="140" selection-start-column="104" selection-end-line="140" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="140" column="47" selection-start-line="140" selection-start-column="47" selection-end-line="140" selection-end-column="47" />
         </state>
       </provider>
     </entry>
