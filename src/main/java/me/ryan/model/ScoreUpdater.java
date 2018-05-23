@@ -139,6 +139,20 @@ public class ScoreUpdater {
 
     }
 
+    public void incTypos() {
+        score.setTypos(score.getTypos() + 1);
+        scoreProperties.setTypos(score.getTyposString());
+
+        logger.debug("inc typos: {}", score.getTyposString());
+    }
+
+    public void decTypos() {
+        score.setTypos(score.getTypos() - 1);
+        scoreProperties.setTypos(score.getTyposString());
+
+        logger.debug("dec typos: {}", score.getTyposString());
+    }
+
     public void incBackspaceCount() {
         score.setBackspaceCount(score.getBackspaceCount() + 1);
         scoreProperties.setBackspaceCount(score.getBackspaceCountString());

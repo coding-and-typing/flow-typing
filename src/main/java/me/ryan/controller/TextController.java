@@ -8,6 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -145,7 +146,8 @@ public class TextController {
                     textShouldBe.setFill(Paint.valueOf("Orange"));
                 } else {
                     textShouldBe.setFill(Paint.valueOf("Red"));
-                    // TODO 更新错字数
+                    // 更新错字数
+                    scoreUpdater.incTypos();
                 }
             }
         } else if (inputLengthLast == inputLengthNow) {
@@ -155,6 +157,12 @@ public class TextController {
             // 删减了字符，需要重置被删除的字符的显示状态。
             for (int i = inputLengthNow; i < inputLengthLast; i++) {
                 var text = (Text) textList.get(i);
+
+                // 检测被删掉的是不是错字（红色），如果是错字，要减去错字数
+                if (text.getFill().equals(Color.RED))
+                    scoreUpdater.decTypos();
+
+                // 重置颜色和透明度
                 text.setOpacity(1);
                 text.setFill(Paint.valueOf("Black"));
             }
@@ -166,9 +174,11 @@ public class TextController {
             this.start();
         }
 
-        // 跟打结束
-        // TODO 结尾无错字才结束跟打
-        if (inputLengthNow >= textList.size()) {
+        // 输入字数等于文章字数，且结尾无错字，就结束跟打
+        var textLast = (Text) textList.get(textList.size() - 1);
+        var inputLast = inputText[inputText.length - 1];
+        if (inputLengthNow == textList.size()
+                && textLast.getText().equals(inputLast)) {
             this.stop();
 
             // 将成绩放入剪切版
