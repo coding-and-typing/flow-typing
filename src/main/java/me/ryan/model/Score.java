@@ -319,7 +319,9 @@ public class Score {
      * 重置成绩
      */
     public void reInit() {
-        this.idOfArticle = 0;
+        //this.idOfArticle = 0;  // 这两个参数并不是跟打过程中的参数，不应该在这里重置
+        //this.retypeCount = 0;
+
         this.keystrokes = 0;
         this.charactersCount = 0;
         this.timeInterval = LocalTime.of(0, 0);
@@ -331,6 +333,5 @@ public class Score {
         this.ratioOfWords = 0;
         this.backspaceCount = 0;
         this.keysAccuracy = 0;
-        this.retypeCount = 0;
     }
 }
