@@ -34,8 +34,13 @@ public class RootController {
      *
      * @param actionEvent xx
      */
-    public void setTextFromCupboard(ActionEvent actionEvent) {
-        // 1. 从剪切版获取文章
+    public void setQQTextFromCupboard(ActionEvent actionEvent) {
+        // 1. 保存上一次的成绩，并初始化成绩
+        scoresController.updateScores();
+        scoreUpdator.reInit();
+
+
+        // 2. 从剪切版获取文章
         Clipboard clipboard = Clipboard.getSystemClipboard();
         String text = clipboard.getString();
 
@@ -44,7 +49,7 @@ public class RootController {
             return;
         }
 
-        // 2. 分析文章
+        // 3. 分析文章
         // 正则匹配
         Pattern pattern =
                 Pattern.compile(".+"     // 这个是 ”xxx群xxx赛文“ 之类的东西
@@ -59,21 +64,16 @@ public class RootController {
         if (matcher.matches()) {
             // 如果匹配上了
 
-            // 3. 设置段号
+            // 4. 设置段号
             scoreUpdator.setIdOfArticle(Integer.parseInt(matcher.group(2)));
-            // 设置赛文内容
+            // 5. 设置赛文内容
             text = matcher.group(1);
 
         } else {
             logger.error("赛文格式不匹配，已加载全文");
         }
 
-        // 4. 保存上一次的成绩，并初始化成绩
-        scoresController.updateScores();
-        scoreUpdator.reInit();
-
-
-        // 5. 显示文章
+        // 6. 显示文章
         textController.setTextShow(text);
     }
 

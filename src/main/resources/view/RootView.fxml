@@ -16,7 +16,7 @@
                     <items>
                         <MenuItem mnemonicParsing="false" text="打开载文面板"/>
                         <MenuItem mnemonicParsing="false" text="QQ剪切版载文"
-                                  onAction="#setTextFromCupboard"/>
+                                  onAction="#setQQTextFromCupboard"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="模式">
