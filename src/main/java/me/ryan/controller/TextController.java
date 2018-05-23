@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 import me.ryan.model.ScoreUpdater;
+import me.ryan.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,10 @@ public class TextController {
     private final ScoreUpdater scoreUpdater;
 
     // 保存上次按键消息时, textInputArea 的长度。用于判断字符量的增减
-    private int inputLengthLast = 0;
+    private int inputLengthLast;
 
     // 跟打完毕的标志(它和 isActive 不一样，isActive 是用户离开界面的标志)
-    private boolean done = false;
+    private boolean done;
 
     @Autowired
     public TextController(ScoreUpdater scoreUpdater) {
@@ -109,7 +110,7 @@ public class TextController {
         // 跟打结束后，就不应该更新任何东西了。
         if (done) return;
 
-        // 当此方法被调用时，用户一定已经开始输入了，所以要start
+        // 用户开始输入，开始记录
         if (!scoreUpdater.isActive()) scoreUpdater.start();
 
         // 1. 更新和键入字符有关的内容
@@ -120,36 +121,40 @@ public class TextController {
     }
 
     private void updateText() {
-        // TODO 先测试一下这个长度是 char 长度，还是 code point 长度
-        int InputLengthNow = textInputArea.getLength();
+        String[] inputText = Utils.codepoint2Strings(
+                textInputArea.getText().codePoints().toArray());
+
+        // 要算 code point
+        int inputLengthNow = inputText.length;
 
         // 1. 更新字符数
-        if (inputLengthLast < InputLengthNow) {
-            scoreUpdater.addToCharactersCount(InputLengthNow - inputLengthLast);
+        if (inputLengthLast < inputLengthNow) {
+            // 键入了字符，更新
+            scoreUpdater.addToCharactersCount(inputLengthNow - inputLengthLast);
+        } else if (inputLengthLast == inputLengthNow) {
+            // 相等的话，就不需要更新任何东西。打中文会有这种情况
+            return;
+        } else {
+            // TODO 删减了字符，需要重置被删除的字符的显示状态。
         }
 
         // 2. 更新跟打文本的显示效果、还有错字数
         var textList = textShowArea.getChildren();
-        var inputLength = textInputArea.getLength();
-
-        // 为0还更新个屁啊
-        if (inputLength == 0 || textList.size() == 0) return;
 
         // 跟打结束
         // TODO 结尾无错字才结束跟打
-        if (inputLength >= textList.size()) {
+        if (inputLengthNow >= textList.size()) {
             done = true;
             textInputArea.setEditable(false);
             scoreUpdater.suspended();
         }
 
-        // 检测是否敲对了
-        // TODO javafx的get方法操作对象是不是code point?
-        for (int i = inputLengthLast; i < inputLength; i++) {
-            var textInput = textInputArea.getText(i, i + 1);
+        // 检测刚刚键入的字符是否敲对了
+        for (int i = inputLengthLast; i < inputLengthNow; i++) {
+            var inputChar = inputText[i];
             var textShouldBe = (Text) textList.get(i);
 
-            if (textShouldBe.getText().equals(textInput)) {
+            if (textShouldBe.getText().equals(inputChar)) {
                 textShouldBe.setOpacity(0.5);  // 敲对了
                 textShouldBe.setFill(Paint.valueOf("Orange"));
             } else {
@@ -157,6 +162,10 @@ public class TextController {
                 // TODO 更新错字数
             }
         }
+
+
+        // 最后，更新 inputLengthLast
+        inputLengthLast = inputLengthNow;
     }
 
     private void updateKeys(KeyEvent keyEvent) {
@@ -180,8 +189,10 @@ public class TextController {
     @FXML
     private void initialize() {
         // 设置一些样式参数，也可用 css 控制
+        textInputArea.setEditable(false);
+        done = true;
+        inputLengthLast = 0;
     }
-
 
 
 }
