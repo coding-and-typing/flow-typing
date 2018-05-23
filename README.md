@@ -47,5 +47,5 @@
     - javafx 的 Text 对象好像没有 background 类，不知道该怎么弄。
     
     
-## License ([The 3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause))
+## License (The 3-Clause BSD License)
 

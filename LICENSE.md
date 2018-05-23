@@ -1,8 +1,8 @@
 The 3-Clause BSD License
 
-SPDX short identifier: BSD-3-Clause
+https://opensource.org/licenses/BSD-3-Clause
 
-Copyright 2018 Ryan Yin
+Copyright 2018-present Ryan Yin. All Rights Reserved.
 
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
