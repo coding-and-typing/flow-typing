@@ -150,13 +150,12 @@ public class TextController {
             // 相等的话，就不需要更新任何东西。打中文会有这种情况
             return;
         } else {
-            // TODO 删减了字符，需要重置被删除的字符的显示状态。
-        }
-
-        // 用户在跟打过程中删除了已经输入的所有内容，这时要调用重打方法
-        // 但是调用start前，要先恢复文章显示框的所有字符的样式，所以它要放这下面。
-        if (inputLengthNow == 0 && inputLengthLast > 0) {
-            this.start();
+            // 删减了字符，需要重置被删除的字符的显示状态。
+            for (int i = inputLengthNow; i < inputLengthLast; i++) {
+                var text = (Text) textList.get(i);
+                text.setOpacity(1);
+                text.setFill(Paint.valueOf("Black"));
+            }
         }
 
 
