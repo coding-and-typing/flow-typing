@@ -306,10 +306,10 @@ public class Score {
                 " 击键" + getKpsString() +
                 " 码长" + getKeysEachCharString() +
                 " 回车" + getKeyEnterCountString() +
-                " 错字" + getTyposString() +
-                " 打词" + getRatioOfWordsString() +
+                // " 错字" + getTyposString() +
+                // " 打词" + getRatioOfWordsString() +
                 " 退格" + getBackspaceCountString() +
-                " 键准" + getKeysAccuracyString() +
+                // " 键准" + getKeysAccuracyString() +
                 " 重打" + getRetypeCountString() +
                 " 校验" + getHashCodeString();
     }

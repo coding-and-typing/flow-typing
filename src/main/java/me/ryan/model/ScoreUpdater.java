@@ -97,6 +97,8 @@ public class ScoreUpdater {
         // Id 是在载文时调用的，所以千万别加 checkIt。
 
         score.setIdOfArticle(id);
+
+        logger.debug("set idOfArticle: {}", id);
         // TODO 整个地方来显示 idOfArticle
     }
 
@@ -158,11 +160,11 @@ public class ScoreUpdater {
      * 暂停更新，用户离开
      */
     public void suspended() {
+        // 暂停时，要更新一下成绩。
+        updateScore();
+
         // 保存此次的timeIntervalAll。
         timeIntervalLast = getTimeIntervalAll();
-
-        // 暂停时，也要更新一下成绩。
-        updateScore();
 
         this.active = false;
 
