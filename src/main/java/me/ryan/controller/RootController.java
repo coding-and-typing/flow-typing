@@ -34,7 +34,7 @@ public class RootController {
      *
      * @param actionEvent xx
      */
-    public void setQQTextFromCupboard(ActionEvent actionEvent) {
+    public void setTextFromCupboard(ActionEvent actionEvent) {
         // 1. 保存上一次的成绩，并初始化成绩
         scoresController.updateScores();
         scoreUpdater.reInit();
