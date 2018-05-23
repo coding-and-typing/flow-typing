@@ -6,7 +6,7 @@
 ## 2. 使用方式
 1. 项目使用了 java10 的 var 关键字, 所以运行前提是你安装了 [jre10](http://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html). 如果没有安装, 请先安装该环境.
 2. 下载[最新的jar包](https://github.com/yuansuye/TypingPractice/releases).
-3. 在jar包所在目录下, 运行 `java -jar typing_practice.x.x.x.jar`, `x.x.x` 请换成你下载的版本.
+3. 在jar包所在目录下, 运行 `java -jar typing_practice.x.x.x.jar`, `x.x.x` 请换成你下载的版本.(windows用户可以直接双击运行)
 
 
 ## 3. 演示：
