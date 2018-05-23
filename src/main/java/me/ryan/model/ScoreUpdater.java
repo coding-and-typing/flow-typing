@@ -31,7 +31,8 @@ public class ScoreUpdater {
     // start() 被调用前，也就是用户离开前，用户输入所用过的时间。
     private LocalTime timeIntervalLast;
 
-    // TODO 通过打词键入的字符数
+    // TODO 通过打词键入的字符数，名字就胡乱取了
+    private int charCountInWord;
 
     // TODO ：退格 等
 
@@ -43,6 +44,8 @@ public class ScoreUpdater {
         this.active = false;  // 还没开始输入时，为false
         this.startTime = LocalTime.now();
         timeIntervalLast = LocalTime.of(0, 0);  // 初始用时为0
+
+        this.charCountInWord = 0;
 
         // 开启自动更新
         updateAutomatically();
@@ -140,6 +143,8 @@ public class ScoreUpdater {
     }
 
     public void incTypos() {
+        checkIt("incTypos");
+
         score.setTypos(score.getTypos() + 1);
         scoreProperties.setTypos(score.getTyposString());
 
@@ -147,17 +152,36 @@ public class ScoreUpdater {
     }
 
     public void decTypos() {
+        checkIt("decTypos");
+
         score.setTypos(score.getTypos() - 1);
         scoreProperties.setTypos(score.getTyposString());
 
         logger.debug("dec typos: {}", score.getTyposString());
     }
 
+    public void setTypos(int typos) {
+        checkIt("setTypos");
+
+        score.setTypos(typos);
+        scoreProperties.setTypos(score.getTyposString());
+
+        logger.debug("set typos: {}", score.getTyposString());
+    }
+
     public void incBackspaceCount() {
+        checkIt("incBackspaceCount");
+
         score.setBackspaceCount(score.getBackspaceCount() + 1);
         scoreProperties.setBackspaceCount(score.getBackspaceCountString());
 
         logger.debug("inc BackspaceCount:　{}", score.getBackspaceCount());
+    }
+
+    public void addToCharCountInWord(int count) {
+        checkIt("addToCharCountInWord");
+
+        this.charCountInWord += count;
     }
 
     /**
@@ -234,8 +258,10 @@ public class ScoreUpdater {
             score.setKeysEachChar(newKeysEachChar);
             scoreProperties.setKeysEachChar(score.getKeysEachCharString());
 
-            // TODO 5. 更新 打词率
-
+            // 5. 更新 打词比率
+            double newRatioOfWords = charCountInWord / (double) score.getCharactersCount();
+            score.setRatioOfWords(newRatioOfWords);
+            scoreProperties.setRatioOfWords(score.getRatioOfWordsString());
 
             // TODO 6. 更新 键准
         }
@@ -250,14 +276,16 @@ public class ScoreUpdater {
 
         this.active = false;
         this.startTime = LocalTime.now();
-        timeIntervalLast = LocalTime.of(0, 0);
+        this.timeIntervalLast = LocalTime.of(0, 0);
+
+        this.charCountInWord = 0;
 
         logger.info("重置成绩。");
     }
 
 
     /**
-     * TODO 生成收文机器人能识别的成绩字符串
+     * 生成收文机器人能识别的成绩字符串
      */
     @Override
     public String toString() {
