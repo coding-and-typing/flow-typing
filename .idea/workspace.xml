@@ -7,10 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61f14bf1-8941-46f1-94c5-9ac4a687f938" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/跟打文章" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,11 +52,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="跟打文章" pinned="false" current-in-tab="true">
+      <file leaf-file-name="跟打文章" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/跟打文章">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
               <caret line="16" selection-start-line="16" selection-end-line="19" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoresController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/ScoresController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="110" column="34" lean-forward="true" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="308">
+                <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -112,10 +131,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/logback-test.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/RootController.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" />
         <option value="$PROJECT_DIR$/src/test/resources/跟打文章" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -187,21 +206,43 @@
               <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ryan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ryan" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ryan" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ryan" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -337,7 +378,7 @@
       <workItem from="1527046950683" duration="136000" />
       <workItem from="1527049525231" duration="243000" />
       <workItem from="1527087188848" duration="1399000" />
-      <workItem from="1527088689724" duration="852000" />
+      <workItem from="1527088689724" duration="1122000" />
     </task>
     <task id="LOCAL-00001" summary="1. 开始使用maven管理依赖，并稍微调整了下项目结构。&#10;2. 使用logback作为日志实现框架。&#10;3. 使用Spring进行依赖注入，简化代码。">
       <created>1526801470721</created>
@@ -472,11 +513,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527045662081</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="实现错字统计功能">
+      <created>1527089780852</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1527089780853</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61340000" />
+    <option name="totallyTimeSpent" value="61610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="725" extended-state="6" />
@@ -540,7 +588,8 @@
     <MESSAGE value="修复windows\mac\linux下的换行符不同导致赛文加载失败的问题." />
     <MESSAGE value="更新README" />
     <MESSAGE value="同步 .idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="同步 .idea" />
+    <MESSAGE value="实现错字统计功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现错字统计功能" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -690,13 +739,6 @@
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/java.base/java/util/regex/Pattern.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/java.base/java/lang/String.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/java.base/java/util/regex/Matcher.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/ScoresController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="110" column="34" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/input/Clipboard.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreProperties.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -735,16 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="549">
-            <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -812,6 +844,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="16" selection-start-line="16" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/ScoresController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="110" column="34" lean-forward="true" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="308">
+            <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
