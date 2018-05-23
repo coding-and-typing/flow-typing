@@ -7,30 +7,29 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="me.ryan.controller.ScoresController"
       maxHeight="Infinity" maxWidth="Infinity"
-      minHeight="100.0" minWidth="600.0"
-      prefHeight="100.0" prefWidth="600.0"
+      minHeight="100.0" minWidth="800.0"
+      prefHeight="100.0" prefWidth="800.0"
       xmlns="http://javafx.com/javafx/8.0.141">
 
     <padding>
         <Insets right="10" left="10"/>
     </padding>
     <children>
-        <TableView fx:id="scoresTable"
-                   minHeight="100" minWidth="75">
+        <TableView fx:id="scoresTable">
             <columns>
-                <TableColumn fx:id="cpm" text="速度"/>
-                <TableColumn fx:id="kps" text="击键"/>
-                <TableColumn fx:id="keysEachChar" text="码长"/>
+                <TableColumn fx:id="cpm" text="速度" prefWidth="65"/>
+                <TableColumn fx:id="kps" text="击键" prefWidth="65"/>
+                <TableColumn fx:id="keysEachChar" text="码长" prefWidth="65"/>
 
-                <TableColumn fx:id="timeInterval" text="用时"/>
-                <TableColumn fx:id="keyEnterCount" text="回车"/>
-                <TableColumn fx:id="typos" text="错字"/>
-                <TableColumn fx:id="charactersCount" text="字数"/>
-                <TableColumn fx:id="ratioOfWords" text="打词"/>
-                <TableColumn fx:id="backspaceCount" text="退格"/>
-                <TableColumn fx:id="keystrokes" text="键数"/>
-                <TableColumn fx:id="keysAccuracy" text="键准"/>
-                <TableColumn fx:id="retypeCount" text="重打"/>
+                <TableColumn fx:id="timeInterval" text="用时" prefWidth="65"/>
+                <TableColumn fx:id="keyEnterCount" text="回车" prefWidth="65"/>
+                <TableColumn fx:id="typos" text="错字" prefWidth="65"/>
+                <TableColumn fx:id="charactersCount" text="字数" prefWidth="65"/>
+                <TableColumn fx:id="ratioOfWords" text="打词" prefWidth="65"/>
+                <TableColumn fx:id="backspaceCount" text="退格" prefWidth="65"/>
+                <TableColumn fx:id="keystrokes" text="键数" prefWidth="65"/>
+                <TableColumn fx:id="keysAccuracy" text="键准" prefWidth="65"/>
+                <TableColumn fx:id="retypeCount" text="重打" prefWidth="65"/>
             </columns>
         </TableView>
     </children>
