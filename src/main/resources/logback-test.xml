@@ -17,7 +17,7 @@
     </appender>
 
     <!--级别在debug以下的log会被抑制输出(log等级: error warn info debug trace)-->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
