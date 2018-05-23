@@ -136,7 +136,9 @@ public class TextController {
             int count = inputLengthNow - inputLengthLast;
             scoreUpdater.addToCharactersCount(count);
             // 如果字符数添加了不止一个，还要更新打词字符数
-
+            if (count > 1) {
+                scoreUpdater.addToCharCountInWord(count);
+            }
 
             // 2. 检测刚刚键入的字符是否敲对了
             for (int i = inputLengthLast; i < inputLengthNow; i++) {
