@@ -5,6 +5,8 @@ import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
@@ -81,13 +83,11 @@ public class TextController {
      * @param text
      */
     public void setTextShow(String text) {
-        // 1. 初始化
-        inputLengthLast = 0;
-        done = false;
+        // 1. 重置状态
+        this.start();
 
         // 清空两个组件的内容
         textShowArea.getChildren().clear();
-        textInputArea.setText("");
 
         // 2. 每个字符为一个 Text 对象，这样就可以分别控制显示效果了。
         text.codePoints().forEach(
@@ -97,9 +97,6 @@ public class TextController {
                     textShowArea.getChildren().add(text1);
                 }
         );
-
-        // 3. 输入框允许输入
-        textInputArea.setEditable(true);
     }
 
 
@@ -124,13 +121,31 @@ public class TextController {
         String[] inputText = Utils.codepoint2Strings(
                 textInputArea.getText().codePoints().toArray());
 
-        // 要算 code point
+        var textList = textShowArea.getChildren();
+
+        // code point, 字符数
         int inputLengthNow = inputText.length;
 
-        // 1. 更新字符数
+
+        logger.info("inputLengthLast:{}, inputLengthNow:{}", inputLengthLast, inputLengthNow);
+
         if (inputLengthLast < inputLengthNow) {
-            // 键入了字符，更新
+            // 1. 更新字符数
             scoreUpdater.addToCharactersCount(inputLengthNow - inputLengthLast);
+
+            // 2. 检测刚刚键入的字符是否敲对了
+            for (int i = inputLengthLast; i < inputLengthNow; i++) {
+                var inputChar = inputText[i];
+                var textShouldBe = (Text) textList.get(i);
+
+                if (textShouldBe.getText().equals(inputChar)) {
+                    textShouldBe.setOpacity(0.5);  // 敲对了
+                    textShouldBe.setFill(Paint.valueOf("Orange"));
+                } else {
+                    textShouldBe.setFill(Paint.valueOf("Red"));
+                    // TODO 更新错字数
+                }
+            }
         } else if (inputLengthLast == inputLengthNow) {
             // 相等的话，就不需要更新任何东西。打中文会有这种情况
             return;
@@ -138,31 +153,24 @@ public class TextController {
             // TODO 删减了字符，需要重置被删除的字符的显示状态。
         }
 
-        // 2. 更新跟打文本的显示效果、还有错字数
-        var textList = textShowArea.getChildren();
+        // 用户在跟打过程中删除了已经输入的所有内容，这时要调用重打方法
+        // 但是调用start前，要先恢复文章显示框的所有字符的样式，所以它要放这下面。
+        if (inputLengthNow == 0 && inputLengthLast > 0) {
+            this.start();
+        }
+
 
         // 跟打结束
         // TODO 结尾无错字才结束跟打
         if (inputLengthNow >= textList.size()) {
-            done = true;
-            textInputArea.setEditable(false);
-            scoreUpdater.suspended();
+            this.stop();
+
+            // 将成绩放入剪切版
+            Clipboard clipboard = Clipboard.getSystemClipboard();
+            var content = new ClipboardContent();
+            content.putString(scoreUpdater.toString());
+            clipboard.setContent(content);
         }
-
-        // 检测刚刚键入的字符是否敲对了
-        for (int i = inputLengthLast; i < inputLengthNow; i++) {
-            var inputChar = inputText[i];
-            var textShouldBe = (Text) textList.get(i);
-
-            if (textShouldBe.getText().equals(inputChar)) {
-                textShouldBe.setOpacity(0.5);  // 敲对了
-                textShouldBe.setFill(Paint.valueOf("Orange"));
-            } else {
-                textShouldBe.setFill(Paint.valueOf("Red"));
-                // TODO 更新错字数
-            }
-        }
-
 
         // 最后，更新 inputLengthLast
         inputLengthLast = inputLengthNow;
@@ -188,11 +196,29 @@ public class TextController {
      */
     @FXML
     private void initialize() {
-        // 设置一些样式参数，也可用 css 控制
         textInputArea.setEditable(false);
-        done = true;
+        done = true;  // 刚初始化时，不允许用户输入，因此 done 应该设为 true
         inputLengthLast = 0;
     }
 
+    /**
+     * 在开始跟打前（或按下重打键后）调用这个方法，设置一些必要的参数
+     */
+    private void start() {
+        textInputArea.setEditable(true);
+        done = false;   // 开始跟打了，当前是未done的状态
+        inputLengthLast = 0;
 
+        textInputArea.setText("");
+
+        scoreUpdater.reInit();
+    }
+
+    private void stop() {
+        textInputArea.setEditable(false);
+        done = true;   // 开始跟打了，当前是未done的状态
+        inputLengthLast = 0;
+
+        scoreUpdater.suspended();
+    }
 }

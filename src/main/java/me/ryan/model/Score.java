@@ -29,6 +29,7 @@ public class Score {
     private int keystrokes;
 
     // 字数
+    // 长按的时候，只记一个键，但字符数却是一直增的，所以有时字数比键数大，是正常的
     private int charactersCount;
 
     // 用时
