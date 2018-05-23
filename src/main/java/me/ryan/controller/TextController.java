@@ -195,6 +195,40 @@ public class TextController {
             clipboard.setContent(content);
         }
 
+        // 检测到光标不在末尾时, 就不仅需要刷新结尾部分的状态。还需要查看前面所有的字符的状态
+        // position 是 code point 偏移，不是 char 偏移
+        var position = textInputArea.getCaretPosition();
+        if (position != inputLengthNow) {
+            int end = Math.min(inputLengthLast, inputLengthNow);
+            for (int i = 0; i < end; i++) {
+                var inputChar = inputText[i];
+                var textShouldBe = (Text) textList.get(i);
+
+                if (textShouldBe.getText().equals(inputChar)) {
+                    // 进入这里说明这个字符是正确的
+                    if (textShouldBe.getFill().equals(Color.RED)) {
+                        // 说明原来不是正确的(红色)
+
+                        scoreUpdater.decTypos();  // 那就是修正了一个字符
+
+                        // 设为敲对了的样式
+                        textShouldBe.setOpacity(0.5);
+                        textShouldBe.setFill(Paint.valueOf("Orange"));
+                    }
+
+                } else {
+                    if (textShouldBe.getFill().equals(Color.RED)) {
+                        // 说明原来就不正确的(红色)，现在也还是不正确，啥都不需要干
+                        return;
+                    }
+
+                    scoreUpdater.incTypos();  // 那就是多了一个错字
+                    textShouldBe.setOpacity(1);
+                    textShouldBe.setFill(Paint.valueOf("Red"));
+                }
+            }
+        }
+
         // 最后，更新 inputLengthLast
         inputLengthLast = inputLengthNow;
     }

@@ -6,10 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61f14bf1-8941-46f1-94c5-9ac4a687f938" name="Default" comment="">
+    <list default="true" id="61f14bf1-8941-46f1-94c5-9ac4a687f938" name="Default" comment="现在可以移动光标修改已经跟打的字符了">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,29 +38,17 @@
       <file leaf-file-name="TextController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="138" selection-start-line="138" selection-end-line="138" />
+            <state relative-caret-position="444">
+              <caret line="225" column="32" selection-start-line="225" selection-start-column="32" selection-end-line="225" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreUpdater.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java">
+      <file leaf-file-name="跟打文章" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/跟打文章">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="716">
-              <caret line="287" column="7" lean-forward="true" selection-start-line="287" selection-start-column="7" selection-end-line="287" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="326">
-                <caret line="39" column="56" lean-forward="true" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="56" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="114">
+              <caret line="16" selection-start-line="16" selection-end-line="19" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -113,11 +101,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/logback-test.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/RootController.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/ScoresController.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/跟打文章" />
-        <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/跟打文章" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java" />
       </list>
     </option>
   </component>
@@ -154,10 +142,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="64" />
-    <option name="y" value="39" />
-    <option name="width" value="1201" />
-    <option name="height" value="644" />
+    <option name="x" value="84" />
+    <option name="y" value="32" />
+    <option name="width" value="1191" />
+    <option name="height" value="642" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -249,7 +237,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -365,7 +353,7 @@
       <workItem from="1527046950683" duration="136000" />
       <workItem from="1527049525231" duration="243000" />
       <workItem from="1527087188848" duration="1399000" />
-      <workItem from="1527088689724" duration="2778000" />
+      <workItem from="1527088689724" duration="5836000" />
     </task>
     <task id="LOCAL-00001" summary="1. 开始使用maven管理依赖，并稍微调整了下项目结构。&#10;2. 使用logback作为日志实现框架。&#10;3. 使用Spring进行依赖注入，简化代码。">
       <created>1526801470721</created>
@@ -528,11 +516,39 @@
       <option name="project" value="LOCAL" />
       <updated>1527090312041</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="完成打词率属性">
+      <created>1527091490130</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1527091490130</updated>
+    </task>
+    <task id="LOCAL-00025" summary="完成打词率属性">
+      <created>1527091571408</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1527091571408</updated>
+    </task>
+    <task id="LOCAL-00026" summary="完成打词率属性">
+      <created>1527091674291</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1527091674291</updated>
+    </task>
+    <task id="LOCAL-00027" summary="完成打词率属性">
+      <created>1527091736579</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1527091736579</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63266000" />
+    <option name="totallyTimeSpent" value="66324000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="725" extended-state="6" />
@@ -544,12 +560,12 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32954547" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28691274" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.34205934" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28621292" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32984293" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.17818181" visible="true" weight="0.27452415" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.17818181" visible="true" weight="0.2840909" />
       <window_info anchor="right" id="Database" order="5" weight="0.32954547" />
       <window_info id="Structure" order="1" sideWeight="0.8218182" side_tool="true" weight="0.275" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -598,7 +614,8 @@
     <MESSAGE value="同步 .idea" />
     <MESSAGE value="实现错字统计功能" />
     <MESSAGE value="修复历史成绩的一个bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复历史成绩的一个bug" />
+    <MESSAGE value="完成打词率属性" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成打词率属性" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -704,8 +721,6 @@
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/layout/Pane.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/beans/property/ReadOnlyIntegerWrapper.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/beans/value/ObservableIntegerValue.java" />
-    <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/beans/property/IntegerPropertyBase.java" />
-    <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.controls/javafx/scene/control/TextInputControl.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/input/KeyEvent.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/collections/ObservableList.java" />
     <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/java.base/java/util/List.java" />
@@ -828,34 +843,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/跟打文章">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/ScoresController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
           <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="326">
-            <caret line="39" column="56" lean-forward="true" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="56" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="138" selection-start-line="138" selection-end-line="138" />
         </state>
       </provider>
     </entry>
@@ -874,8 +865,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/model/ScoreUpdater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
+        <state relative-caret-position="920">
           <caret line="287" column="7" lean-forward="true" selection-start-line="287" selection-start-column="7" selection-end-line="287" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/beans/property/IntegerPropertyBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Softwares/jdk-10.0.1/lib/src.zip!/javafx.controls/javafx/scene/control/TextInputControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="414" column="66" selection-start-line="414" selection-start-column="66" selection-end-line="414" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="275">
+            <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/ryan/controller/TextController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="225" column="32" selection-start-line="225" selection-start-column="32" selection-end-line="225" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/跟打文章">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="16" selection-start-line="16" selection-end-line="19" selection-end-column="15" />
         </state>
       </provider>
     </entry>
