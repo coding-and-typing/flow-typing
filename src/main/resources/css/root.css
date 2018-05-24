@@ -1,18 +1,22 @@
 @font-face {
-    font-family: SourceHanSerifCN-Regular;
-    src: url("/font/SourceHanSerifCN-Regular.otf");
+    src: url("/font/SourceHanSerifSC-Regular.otf");
 }
 
 /*1. 全局配置*/
 .root {
-    -fx-font-family: "SourceHanSerifCN-Regular";
     -fx-font-size: 14;
+    -fx-font-family: "Source Han Serif SC";
     /*-fx-background: ;*/
     -fx-text-alignment: center;
 }
 
 /*2. 菜单栏*/
+.menu-bar {
+}
 
+.menu,
+.menu-item {
+}
 
 /*3. 跟打显示栏*/
 TextFlow {
@@ -27,14 +31,10 @@ TextFlow > Text {
 
 /*4. 跟打输入栏*/
 .text-area {
-
+    -fx-font-size: 22;
 }
 
 /*5. 成绩显示栏*/
-.table-view {
-
-}
-
 .table-column {
     -fx-alignment: center;
 }

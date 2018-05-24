@@ -80,7 +80,7 @@ public class TextController {
     /**
      * 载文
      *
-     * @param text
+     * @param text 文章
      */
     public void setTextShow(String text) {
         // 1. 重置状态
