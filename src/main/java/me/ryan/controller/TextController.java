@@ -122,13 +122,15 @@ public class TextController {
         String[] inputText = Utils.codepoint2Strings(
                 textInputArea.getText().codePoints().toArray());
 
-        var textList = textShowArea.getChildren();
-
         // code point, 字符数
         int inputLengthNow = inputText.length;
 
-
         logger.debug("inputLengthLast:{}, inputLengthNow:{}", inputLengthLast, inputLengthNow);
+
+        var textList = textShowArea.getChildren();
+
+        // 如果输入字符长度超过了文章长度，就跳过。
+        if (inputLengthNow > textList.size()) return;
 
         if (inputLengthLast < inputLengthNow) {
             // 1. 更新字符数

@@ -6,12 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61f14bf1-8941-46f1-94c5-9ac4a687f938" name="Default" comment="使用内置字体-思源宋体">
+    <list default="true" id="61f14bf1-8941-46f1-94c5-9ac4a687f938" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/root.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/root.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/SourceHanSerifSC-Regular.otf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/font/SourceHanSansSC-Normal.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/跟打文章" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/跟打文章" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -163,6 +159,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -170,6 +167,24 @@
             <path>
               <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="typing_practice_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
@@ -262,18 +277,10 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="typing_practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Typing_Practice" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -420,7 +427,7 @@
       <workItem from="1527150102815" duration="1040000" />
       <workItem from="1527151990880" duration="1509000" />
       <workItem from="1527125429667" duration="2493000" />
-      <workItem from="1527156918836" duration="233000" />
+      <workItem from="1527156918836" duration="570000" />
     </task>
     <task id="LOCAL-00001" summary="1. 开始使用maven管理依赖，并稍微调整了下项目结构。&#10;2. 使用logback作为日志实现框架。&#10;3. 使用Spring进行依赖注入，简化代码。">
       <created>1526801470721</created>
@@ -702,15 +709,21 @@
       <option name="project" value="LOCAL" />
       <updated>1527152169459</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="字体换成思源黑体-normal">
+      <created>1527157167598</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1527157167599</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90809000" />
+    <option name="totallyTimeSpent" value="91379000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="725" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32919255" />
@@ -753,7 +766,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="修复载文时，不清空之前的内容的问题。" />
     <MESSAGE value="优化UI界面" />
     <MESSAGE value="修复了字数统计的一部分bug, 但还有一部分待解决。。" />
     <MESSAGE value="1. 优化剪切版载文。2. 删除输入框所有内容时，清空成绩。" />
@@ -778,7 +790,8 @@
     <MESSAGE value="更新css, 添加otf字体" />
     <MESSAGE value="更新readme" />
     <MESSAGE value="使用内置字体-思源宋体" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用内置字体-思源宋体" />
+    <MESSAGE value="字体换成思源黑体-normal" />
+    <option name="LAST_COMMIT_MESSAGE" value="字体换成思源黑体-normal" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
