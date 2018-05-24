@@ -1,11 +1,11 @@
 @font-face {
-    src: url("/font/SourceHanSerifSC-Regular.otf");
+    src: url("/font/SourceHanSansSC-Normal.otf");
 }
 
 /*1. 全局配置*/
 .root {
     -fx-font-size: 14;
-    -fx-font-family: "Source Han Serif SC";
+    -fx-font-family: "Source Han Sans SC Normal";
     /*-fx-background: ;*/
     -fx-text-alignment: center;
 }
