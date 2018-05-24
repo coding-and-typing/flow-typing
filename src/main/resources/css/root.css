@@ -1,4 +1,40 @@
+@font-face {
+    font-family: SourceHanSerifCN-Regular;
+    src: url("/font/SourceHanSerifCN-Regular.otf");
+}
 
--fx-background-color {
+/*1. 全局配置*/
+.root {
+    -fx-font-family: "SourceHanSerifCN-Regular";
+    -fx-font-size: 14;
+    /*-fx-background: ;*/
+    -fx-text-alignment: center;
+}
 
+/*2. 菜单栏*/
+MenuBar {
+}
+
+Menu {
+
+}
+
+/*3. 跟打显示栏*/
+TextFlow {
+}
+
+TextFlow > Text {
+    /*text 没有背景色属性*/
+    /*-fx-text-fill: ;*/
+}
+
+/*4. 跟打输入栏*/
+TextArea {
+}
+
+/*5. 成绩显示栏*/
+TableView {
+}
+
+.table-column {
 }

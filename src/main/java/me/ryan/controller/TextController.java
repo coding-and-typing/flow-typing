@@ -10,7 +10,6 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
@@ -94,7 +93,6 @@ public class TextController {
         text.codePoints().forEach(
                 c -> {
                     var text1 = new Text(new String(Character.toChars(c)));
-                    text1.setFont(Font.font("Verdana", 20));
                     textShowArea.getChildren().add(text1);
                 }
         );

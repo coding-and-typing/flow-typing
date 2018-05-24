@@ -2,12 +2,13 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="me.ryan.controller.RootController"
-      maxHeight="Infinity" maxWidth="Infinity"
+<VBox maxHeight="Infinity" maxWidth="Infinity"
       minHeight="440" minWidth="800"
       prefHeight="440.0" prefWidth="800.0"
-      xmlns="http://javafx.com/javafx/8.0.141">
+      stylesheets="@/css/root.css"
+      xmlns="http://javafx.com/javafx/8.0.141"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="me.ryan.controller.RootController">
 
     <children>
         <MenuBar>
@@ -15,8 +16,7 @@
                 <Menu mnemonicParsing="false" text="发文">
                     <items>
                         <MenuItem mnemonicParsing="false" text="打开载文面板"/>
-                        <MenuItem mnemonicParsing="false" text="QQ剪切版载文"
-                                  onAction="#setTextFromCupboard"/>
+                        <MenuItem mnemonicParsing="false" onAction="#setTextFromCupboard" text="QQ剪切版载文"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="模式">
