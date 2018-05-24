@@ -12,12 +12,7 @@
 }
 
 /*2. 菜单栏*/
-MenuBar {
-}
 
-Menu {
-
-}
 
 /*3. 跟打显示栏*/
 TextFlow {
@@ -31,13 +26,13 @@ TextFlow > Text {
 }
 
 /*4. 跟打输入栏*/
-TextArea {
-    -fx-font-size: 20;
+.text-area {
+
 }
 
 /*5. 成绩显示栏*/
-TableView {
-    /*-fx-background-color: ;*/
+.table-view {
+
 }
 
 .table-column {
