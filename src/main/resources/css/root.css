@@ -21,6 +21,8 @@ Menu {
 
 /*3. 跟打显示栏*/
 TextFlow {
+    -fx-background-color: #e9fadd;
+    -fx-font-size: 22;
 }
 
 TextFlow > Text {
@@ -30,11 +32,14 @@ TextFlow > Text {
 
 /*4. 跟打输入栏*/
 TextArea {
+    -fx-font-size: 20;
 }
 
 /*5. 成绩显示栏*/
 TableView {
+    /*-fx-background-color: ;*/
 }
 
 .table-column {
+    -fx-alignment: center;
 }
