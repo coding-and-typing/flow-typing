@@ -14,7 +14,7 @@ import java.util.Objects;
 @Component
 public class Score {
 
-    // 用于格式化输出小数
+    // 用于格式化输出小数// 用于格式化输出小数
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     // 用于格式化输出时间

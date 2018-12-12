@@ -19,7 +19,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        var loader = new SpringFxmlLoader();
+        SpringFxmlLoader loader = new SpringFxmlLoader();
 
         // 1. 加载 ScoresView
         VBox scoresView = (VBox) loader.load("/view/ScoresView.fxml");

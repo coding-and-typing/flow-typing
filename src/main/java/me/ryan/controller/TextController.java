@@ -1,9 +1,11 @@
 package me.ryan.controller;
 
 
+import javafx.collections.ObservableList;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -92,7 +94,7 @@ public class TextController {
         // 2. 每个字符为一个 Text 对象，这样就可以分别控制显示效果了。
         text.codePoints().forEach(
                 c -> {
-                    var text1 = new Text(new String(Character.toChars(c)));
+                    Text text1 = new Text(new String(Character.toChars(c)));
                     textShowArea.getChildren().add(text1);
                 }
         );
@@ -127,7 +129,7 @@ public class TextController {
 
         logger.debug("inputLengthLast:{}, inputLengthNow:{}", inputLengthLast, inputLengthNow);
 
-        var textList = textShowArea.getChildren();
+        ObservableList<Node> textList = textShowArea.getChildren();
 
         // 如果输入字符长度超过了文章长度，就跳过。
         if (inputLengthNow > textList.size()) return;
@@ -144,8 +146,8 @@ public class TextController {
 
             // 2. 检测刚刚键入的字符是否敲对了
             for (int i = inputLengthLast; i < inputLengthNow; i++) {
-                var inputChar = inputText[i];
-                var textShouldBe = (Text) textList.get(i);
+                String inputChar = inputText[i];
+                Text textShouldBe = (Text) textList.get(i);
 
                 logger.info("inputText_{}: '{}', textShouldBe: {}", i, inputChar, textShouldBe.getText());
 
@@ -164,7 +166,7 @@ public class TextController {
         } else {
             // 删减了字符，需要重置被删除的字符的显示状态。
             for (int i = inputLengthNow; i < inputLengthLast; i++) {
-                var text = (Text) textList.get(i);
+                Text text = (Text) textList.get(i);
 
                 // 检测被删掉的是不是错字（红色），如果是错字，要减去错字数
                 if (text.getFill().equals(Color.RED))
@@ -183,27 +185,27 @@ public class TextController {
         }
 
         // 输入字数等于文章字数，且结尾无错字，就结束跟打
-        var textLast = (Text) textList.get(textList.size() - 1);
-        var inputLast = inputText[inputText.length - 1];
+        Text textLast = (Text) textList.get(textList.size() - 1);
+        String inputLast = inputText[inputText.length - 1];
         if (inputLengthNow == textList.size()
                 && textLast.getText().equals(inputLast)) {
             this.stop();
 
             // 将成绩放入剪切版
             Clipboard clipboard = Clipboard.getSystemClipboard();
-            var content = new ClipboardContent();
+            ClipboardContent content = new ClipboardContent();
             content.putString(scoreUpdater.toString());
             clipboard.setContent(content);
         }
 
         // 检测到光标不在末尾时, 就不仅需要刷新结尾部分的状态。还需要查看前面所有的字符的状态
         // position 是 code point 偏移，不是 char 偏移
-        var position = textInputArea.getCaretPosition();
+        int position = textInputArea.getCaretPosition();
         if (position != inputLengthNow) {
             int end = Math.min(inputLengthLast, inputLengthNow);
             for (int i = 0; i < end; i++) {
-                var inputChar = inputText[i];
-                var textShouldBe = (Text) textList.get(i);
+                String inputChar = inputText[i];
+                Text textShouldBe = (Text) textList.get(i);
 
                 if (textShouldBe.getText().equals(inputChar)) {
                     // 进入这里说明这个字符是正确的
